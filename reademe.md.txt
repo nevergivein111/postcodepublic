@@ -1,0 +1,37 @@
+
+For getting postcode details:
+
+
+Initialize your configuration at app.config as
+	'account' => "test",
+        'password' => "test",
+
+if you are using laravel 4 include Postcodes.php class in index.php as
+	require_once '../postcodes/Postcodes.php';
+if you are using any other franmework then include class at top.
+	require_once '../postcodes/Postcodes.php';
+	
+Create instance of class "Postcodes" and call its 'getpostcodes' method. Pass postcode as an arguments.
+
+example:
+
+		$newpostcode= new Postcodes();
+		$xml = $newpostcode->getpostcodes('LS18 4AD');
+
+This method will return details of postecode.
+
+Please note the amount of address lines is variable.
+
+Attributes	Explanation
+Address1	Street name of the postcode
+Address2	Locality of the postcode or dependent street name if exists
+Address3	Dependent Locality of the postcode
+Address4	Double Dependent Locality of the postcode
+Town		Town of the postcode
+County		County of the postcode
+Postcode	Postcode that has been searched
+PremiseData	All Premises under that postcode are returned in one string divided buy semicolons (;).Each premise 		is split up into Company Name, Building Details and Number. These are separated with vertical bars		(|).
+
+			Premise column1: Organisation
+			Premise column2: Building Details (separated by "/")
+			Premise column3: Number
