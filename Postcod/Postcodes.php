@@ -4,13 +4,18 @@
  */
 class Postcodes
 {   
-  
-    function getpostcodes($postcode)
-    {
-        $account = Config::get('app.account');
-        $password = Config::get('app.password');
 
-        $URL = "http://ws1.postcodesoftware.co.uk/lookup.asmx/getAddress?account=" . $account . "&password=" . $password . "&postcode=" . $postcode;
+	public $account="account";
+	public $password="password";
+	public $postcode="password";
+	
+  
+    function getpostcodes()
+    {
+        $account = 'test1';
+        $password = 'test1';
+
+        $URL = "http://ws1.postcodesoftware.co.uk/lookup.asmx/getAddress?account=" . $this->account . "&password=" . $this->password . "&postcode=" . $this->postcode;
             
         $xml = simplexml_load_file(str_replace(' ','', $URL)); // Removes unnecessary spaces
 
